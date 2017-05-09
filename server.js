@@ -12,6 +12,10 @@ let port = process.env.PORT || 3000
 app.listen(port)
 console.log('API server started on port: ' + port)
 
+app.get('/', (req,res) => {
+ res.sendfile(__dirname + '/index.html');
+})
+
 app.route('/:word').get((req, res) => {
   let word = req.params.word
   if (word.length >= 3 && _.includes(allWords, word)) {
