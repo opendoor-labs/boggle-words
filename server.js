@@ -17,6 +17,8 @@ app.get('/', (req,res) => {
 })
 
 app.route('/:word').get((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS')
   let word = req.params.word
   if (word.length >= 3 && _.includes(allWords, word)) {
     res.json({ valid: true })
